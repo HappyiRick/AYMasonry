@@ -9,8 +9,8 @@
 #import "MASUtilities.h"
 
 /**
- *  An immutable tuple which stores the view and the related NSLayoutAttribute.
- *  Describes part of either the left or right hand side of a constraint equation
+ An immutable tuple which stores the view and the related NSLayoutAttribute.
+ Describes part of either the left or right hand side of a constraint equation
  */
 @interface MASViewAttribute : NSObject
 

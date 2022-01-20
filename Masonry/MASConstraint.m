@@ -8,6 +8,7 @@
 #import "MASConstraint.h"
 #import "MASConstraint+Private.h"
 
+// 定义了一个自定义的异常对象
 #define MASMethodNotImplemented() \
     @throw [NSException exceptionWithName:NSInternalInconsistencyException \
                                    reason:[NSString stringWithFormat:@"You must override %@ in a subclass.", NSStringFromSelector(_cmd)] \
@@ -18,6 +19,7 @@
 #pragma mark - Init
 
 - (id)init {
+    // 在这个方法的重写中，添加了一句断言。旨在禁止该类被实例化
 	NSAssert(![self isMemberOfClass:[MASConstraint class]], @"MASConstraint is an abstract class, you should not instantiate it directly.");
 	return [super init];
 }

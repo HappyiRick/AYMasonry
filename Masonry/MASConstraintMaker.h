@@ -80,30 +80,22 @@ typedef NS_OPTIONS(NSInteger, MASAttribute) {
 #endif
 
 /**
- *  Returns a block which creates a new MASCompositeConstraint with the first item set
- *  to the makers associated view and children corresponding to the set bits in the
- *  MASAttribute parameter. Combine multiple attributes via binary-or.
+ *  Returns a block which creates a new MASCompositeConstraint with the first item set to the makers associated view and children corresponding to the set bits in the MASAttribute parameter. Combine multiple attributes via binary-or.
  */
 @property (nonatomic, strong, readonly) MASConstraint *(^attributes)(MASAttribute attrs);
 
 /**
- *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeEdges
- *  which generates the appropriate MASViewConstraint children (top, left, bottom, right)
- *  with the first item set to the makers associated view
+ *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeEdges which generates the appropriate MASViewConstraint children (top, left, bottom, right) with the first item set to the makers associated view
  */
 @property (nonatomic, strong, readonly) MASConstraint *edges;
 
 /**
- *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeSize
- *  which generates the appropriate MASViewConstraint children (width, height)
- *  with the first item set to the makers associated view
+ *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeSize which generates the appropriate MASViewConstraint children (width, height) with the first item set to the makers associated view
  */
 @property (nonatomic, strong, readonly) MASConstraint *size;
 
 /**
- *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeCenter
- *  which generates the appropriate MASViewConstraint children (centerX, centerY)
- *  with the first item set to the makers associated view
+ *	Creates a MASCompositeConstraint with type MASCompositeConstraintTypeCenter which generates the appropriate MASViewConstraint children (centerX, centerY) with the first item set to the makers associated view
  */
 @property (nonatomic, strong, readonly) MASConstraint *center;
 

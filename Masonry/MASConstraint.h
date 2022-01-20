@@ -10,7 +10,7 @@
 
 /**
  *	Enables Constraints to be created with chainable syntax
- *  Constraint can represent single NSLayoutConstraint (MASViewConstraint) 
+ *  Constraint can represent single NSLayoutConstraint (MASViewConstraint)
  *  or a group of NSLayoutConstraints (MASComposisteConstraint)
  */
 @interface MASConstraint : NSObject

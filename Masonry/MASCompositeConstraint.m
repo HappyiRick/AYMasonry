@@ -10,8 +10,9 @@
 #import "MASConstraint+Private.h"
 
 @interface MASCompositeConstraint () <MASConstraintDelegate>
-
+/// 保存用于标识约束的key
 @property (nonatomic, strong) id mas_key;
+/// 保存初始化时传入的约束数组对象
 @property (nonatomic, strong) NSMutableArray *childConstraints;
 
 @end
@@ -23,6 +24,7 @@
     if (!self) return nil;
 
     _childConstraints = [children mutableCopy];
+    // 遍历约束对象设置代理
     for (MASConstraint *constraint in _childConstraints) {
         constraint.delegate = self;
     }
@@ -33,15 +35,20 @@
 #pragma mark - MASConstraintDelegate
 
 - (void)constraint:(MASConstraint *)constraint shouldBeReplacedWithConstraint:(MASConstraint *)replacementConstraint {
+    // 获取传入约束对象在数组中的位置, 然后替换
     NSUInteger index = [self.childConstraints indexOfObject:constraint];
     NSAssert(index != NSNotFound, @"Could not find constraint %@", constraint);
     [self.childConstraints replaceObjectAtIndex:index withObject:replacementConstraint];
 }
 
 - (MASConstraint *)constraint:(MASConstraint __unused *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
+    // 获取当前对象的代理, 也就是 MASConstraintMaker 对象
     id<MASConstraintDelegate> strongDelegate = self.delegate;
+    // 调用 MASConstraintMaker 对象对该代理方法的实现获取到新约束对象
     MASConstraint *newConstraint = [strongDelegate constraint:self addConstraintWithLayoutAttribute:layoutAttribute];
+    // 设置新约束对象的代理对象
     newConstraint.delegate = self;
+    // 保存约束对象
     [self.childConstraints addObject:newConstraint];
     return newConstraint;
 }
