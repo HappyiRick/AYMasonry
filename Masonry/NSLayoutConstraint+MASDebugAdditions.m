@@ -29,38 +29,36 @@
 
 + (NSDictionary *)layoutAttributeDescriptionsByValue {
     static dispatch_once_t once;
-    static NSDictionary *descriptionMap;
+    static NSMutableDictionary *descriptionMap;
     dispatch_once(&once, ^{
-        descriptionMap = @{
-            @(NSLayoutAttributeTop)      : @"top",
-            @(NSLayoutAttributeLeft)     : @"left",
-            @(NSLayoutAttributeBottom)   : @"bottom",
-            @(NSLayoutAttributeRight)    : @"right",
-            @(NSLayoutAttributeLeading)  : @"leading",
-            @(NSLayoutAttributeTrailing) : @"trailing",
-            @(NSLayoutAttributeWidth)    : @"width",
-            @(NSLayoutAttributeHeight)   : @"height",
-            @(NSLayoutAttributeCenterX)  : @"centerX",
-            @(NSLayoutAttributeCenterY)  : @"centerY",
-            @(NSLayoutAttributeBaseline) : @"baseline",
-            @(NSLayoutAttributeFirstBaseline) : @"firstBaseline",
-            @(NSLayoutAttributeLastBaseline) : @"lastBaseline",
-
+        descriptionMap[@(NSLayoutAttributeTop)] = @"top";
+        descriptionMap[@(NSLayoutAttributeLeft)] = @"left";
+        descriptionMap[@(NSLayoutAttributeBottom)] = @"bottom";
+        descriptionMap[@(NSLayoutAttributeRight)] = @"right";
+        descriptionMap[@(NSLayoutAttributeLeading)] = @"leading";
+        descriptionMap[@(NSLayoutAttributeTrailing)] = @"trailing";
+        descriptionMap[@(NSLayoutAttributeWidth)] = @"width";
+        descriptionMap[@(NSLayoutAttributeHeight)] = @"height";
+        descriptionMap[@(NSLayoutAttributeCenterX)] = @"centerX";
+        descriptionMap[@(NSLayoutAttributeCenterY)] = @"centerY";
+        descriptionMap[@(NSLayoutAttributeBaseline)] = @"baseline";
+        descriptionMap[@(NSLayoutAttributeFirstBaseline)] = @"firstBaseline";
+        descriptionMap[@(NSLayoutAttributeLastBaseline)] = @"lastBaseline";
+        
+        
 #if TARGET_OS_IPHONE || TARGET_OS_TV
-            @(NSLayoutAttributeLeftMargin)           : @"leftMargin",
-            @(NSLayoutAttributeRightMargin)          : @"rightMargin",
-            @(NSLayoutAttributeTopMargin)            : @"topMargin",
-            @(NSLayoutAttributeBottomMargin)         : @"bottomMargin",
-            @(NSLayoutAttributeLeadingMargin)        : @"leadingMargin",
-            @(NSLayoutAttributeTrailingMargin)       : @"trailingMargin",
-            @(NSLayoutAttributeCenterXWithinMargins) : @"centerXWithinMargins",
-            @(NSLayoutAttributeCenterYWithinMargins) : @"centerYWithinMargins",
+        descriptionMap[@(NSLayoutAttributeLeftMargin)] = @"leftMargin";
+        descriptionMap[@(NSLayoutAttributeRightMargin)] = @"rightMargin";
+        descriptionMap[@(NSLayoutAttributeTopMargin)] = @"topMargin";
+        descriptionMap[@(NSLayoutAttributeBottomMargin)] = @"bottomMargin";
+        descriptionMap[@(NSLayoutAttributeLeadingMargin)] = @"leadingMargin";
+        descriptionMap[@(NSLayoutAttributeTrailingMargin)] = @"trailingMargin";
+        descriptionMap[@(NSLayoutAttributeCenterXWithinMargins)] = @"centerXWithinMargins";
+        descriptionMap[@(NSLayoutAttributeCenterYWithinMargins)] = @"centerYWithinMargins";
 #endif
-            
-        };
     
     });
-    return descriptionMap;
+    return [descriptionMap copy];
 }
 
 
